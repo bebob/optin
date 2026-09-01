@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bob Hannon Assistant (Betsy) — SMS Notifications</title>
-  <meta name="description" content="Opt-in details, message types, privacy policy, and terms for personal SMS notifications from the Betsy assistant." />
+  <meta name="description" content="Opt-in sign-up, message types, privacy policy, and terms for personal SMS notifications from the Betsy assistant." />
   <style>
-    :root { --ink:#1a1a1a; --muted:#5b6470; --line:#e6e8eb; --accent:#0b5cad; --bg:#ffffff; }
+    :root { --ink:#1a1a1a; --muted:#5b6470; --line:#e6e8eb; --accent:#0b5cad; --bg:#ffffff; --ok:#0a7d3c; --okbg:#eaf7ef; }
     * { box-sizing:border-box; }
     body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; }
     .wrap { max-width:760px; margin:0 auto; padding:32px 20px 80px; }
@@ -22,6 +22,20 @@
     footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:0.85rem; }
     a { color:var(--accent); }
     .muted { color:var(--muted); }
+    form.signup { margin:14px 0 4px; }
+    .field-row { display:flex; flex-wrap:wrap; gap:10px; align-items:flex-start; }
+    label.flabel { display:block; font-weight:600; font-size:0.95rem; margin-bottom:6px; }
+    input[type="tel"] { flex:1 1 240px; min-width:200px; padding:11px 12px; font-size:1rem; border:1px solid #c6ccd4; border-radius:8px; }
+    input[type="tel"]:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(11,92,173,0.15); }
+    button.submit { padding:11px 20px; font-size:1rem; font-weight:600; color:#fff; background:var(--accent); border:none; border-radius:8px; cursor:pointer; }
+    button.submit:hover { background:#094a8c; }
+    .consent-line { display:flex; gap:9px; align-items:flex-start; margin:14px 0 4px; font-size:0.9rem; color:var(--muted); }
+    .consent-line input { margin-top:4px; }
+    .form-note { font-size:0.85rem; color:var(--muted); margin-top:10px; }
+    .confirm { display:none; border:1px solid #bfe3cd; background:var(--okbg); border-left:4px solid var(--ok); border-radius:10px; padding:18px 20px; margin:16px 0; }
+    .confirm h3 { margin:0 0 8px; font-size:1.05rem; color:var(--ok); }
+    .sms-preview { background:#fff; border:1px solid #cfe6d7; border-radius:8px; padding:12px 14px; font-size:0.95rem; margin-top:10px; }
+    .err { color:#b3261e; font-size:0.88rem; margin-top:8px; display:none; }
   </style>
 </head>
 <body>
@@ -34,12 +48,32 @@
     <p>This page describes the personal notification service operated by Bob Hannon (the "Service"). Bob Hannon's personal AI assistant ("Betsy") sends automated account and system notifications by SMS to Bob Hannon's own mobile number. This is a personal, single-recipient service. There is no marketing, no promotional content, and no third-party recipients.</p>
 
     <div class="card cta">
-      <h2 style="margin-top:0;">How to opt in (consent)</h2>
-      <p>Consent is captured when the account owner enters his mobile number during Betsy setup and confirms enrollment by texting a keyword to the Service number:</p>
-      <ul>
-        <li>Text <span class="kw">START</span> or <span class="kw">YES</span> to <strong>+1 (312) 313-4610</strong> to begin receiving messages.</li>
-        <li>On enrollment, the sender receives a one-time confirmation: <em>"You're now subscribed to personal reminders, meeting alerts, and daily briefings. Msg frequency varies. Msg &amp; data rates may apply. Reply HELP for help, STOP to opt out."</em></li>
-      </ul>
+      <h2 style="margin-top:0;">Sign up for SMS notifications (consent)</h2>
+      <p>To opt in, enter your mobile number, agree to the terms below, and press <strong>Sign up for notifications</strong>. You may also opt in by texting <span class="kw">START</span> or <span class="kw">YES</span> to <strong>+1 (312) 313-4610</strong>.</p>
+
+      <form class="signup" id="signupForm" novalidate>
+        <label class="flabel" for="phone">Mobile number</label>
+        <div class="field-row">
+          <input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel"
+                 placeholder="+1 (312) 555-0123" aria-describedby="phoneErr" />
+          <button type="submit" class="submit">Sign up for notifications</button>
+        </div>
+        <div class="err" id="phoneErr">Please enter a valid mobile phone number.</div>
+
+        <label class="consent-line" for="consent">
+          <input type="checkbox" id="consent" name="consent" />
+          <span>I agree to receive recurring automated SMS notifications from the Bob Hannon Assistant (Betsy) Service at the number provided. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. See the <a href="#privacy">Privacy Policy</a> and <a href="#terms">Terms of Service</a> below.</span>
+        </label>
+        <div class="err" id="consentErr">Please check the box to agree before signing up.</div>
+
+        <p class="form-note">This is a personal, single-recipient service for the account owner. Numbers submitted here are used only to deliver the notifications described below and are never shared with third parties.</p>
+      </form>
+
+      <div class="confirm" id="confirmBox" role="status" aria-live="polite">
+        <h3>&#10003; You're signed up.</h3>
+        <p>A one-time confirmation text is sent to the number you entered:</p>
+        <div class="sms-preview">Bob Hannon Assistant (Betsy): You're now subscribed to personal reminders, meeting alerts, and daily briefings. Msg frequency varies. Msg &amp; data rates may apply. Reply HELP for help, STOP to opt out.</div>
+      </div>
     </div>
 
     <h2>What messages you'll receive</h2>
@@ -88,6 +122,35 @@
       &copy; <span id="yr">2026</span> Bob Hannon. Personal notification service. Not affiliated with any messaging carrier.
     </footer>
   </div>
-  <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    (function () {
+      var form = document.getElementById('signupForm');
+      var phone = document.getElementById('phone');
+      var consent = document.getElementById('consent');
+      var phoneErr = document.getElementById('phoneErr');
+      var consentErr = document.getElementById('consentErr');
+      var confirmBox = document.getElementById('confirmBox');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        phoneErr.style.display = 'none';
+        consentErr.style.display = 'none';
+
+        var digits = (phone.value || '').replace(/\D/g, '');
+        var validPhone = digits.length >= 10 && digits.length <= 15;
+        var ok = true;
+
+        if (!validPhone) { phoneErr.style.display = 'block'; ok = false; }
+        if (!consent.checked) { consentErr.style.display = 'block'; ok = false; }
+        if (!ok) return;
+
+        form.style.display = 'none';
+        confirmBox.style.display = 'block';
+        confirmBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    })();
+  </script>
 </body>
 </html>
