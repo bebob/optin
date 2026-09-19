@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms of Service — Betsy Notifications</title>
+  <meta name="description" content="Sign up for Betsy SMS notifications: daily briefings, calendar and task reminders, and vehicle alerts. Opt-in, privacy policy, and terms." />
+  <style>
+    :root { --ink:#1a1a1a; --muted:#5b6470; --line:#e6e8eb; --accent:#0b5cad; --bg:#ffffff; --ok:#0a7d3c; --okbg:#eaf7ef; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; }
+    .wrap { max-width:760px; margin:0 auto; padding:32px 20px 80px; }
+    header { border-bottom:1px solid var(--line); padding-bottom:20px; margin-bottom:28px; }
+    h1 { font-size:1.55rem; margin:0 0 6px; }
+    h2 { font-size:1.15rem; margin:34px 0 10px; padding-top:8px; }
+    .sub { color:var(--muted); font-size:0.95rem; }
+    .card { border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin:18px 0; background:#fafbfc; }
+    .cta { border-left:4px solid var(--accent); }
+    code, .kw { background:#eef2f6; padding:1px 6px; border-radius:5px; font-size:0.92em; }
+    ul { padding-left:20px; }
+    li { margin:4px 0; }
+    footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:0.85rem; }
+    a { color:var(--accent); }
+    .muted { color:var(--muted); }
+    form.signup { margin:14px 0 4px; }
+    .field-row { display:flex; flex-wrap:wrap; gap:10px; align-items:flex-start; }
+    label.flabel { display:block; font-weight:600; font-size:0.95rem; margin-bottom:6px; }
+    input[type="tel"] { flex:1 1 240px; min-width:200px; padding:11px 12px; font-size:1rem; border:1px solid #c6ccd4; border-radius:8px; }
+    input[type="tel"]:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(11,92,173,0.15); }
+    button.submit { padding:11px 20px; font-size:1rem; font-weight:600; color:#fff; background:var(--accent); border:none; border-radius:8px; cursor:pointer; }
+    button.submit:hover { background:#094a8c; }
+    .consent-line { display:flex; gap:9px; align-items:flex-start; margin:14px 0 4px; font-size:0.9rem; color:var(--muted); }
+    .consent-line input { margin-top:4px; }
+    .form-note { font-size:0.85rem; color:var(--muted); margin-top:10px; }
+    .confirm { display:none; border:1px solid #bfe3cd; background:var(--okbg); border-left:4px solid var(--ok); border-radius:10px; padding:18px 20px; margin:16px 0; }
+    .confirm h3 { margin:0 0 8px; font-size:1.05rem; color:var(--ok); }
+    .sms-preview { background:#fff; border:1px solid #cfe6d7; border-radius:8px; padding:12px 14px; font-size:0.95rem; margin-top:10px; }
+    .err { color:#b3261e; font-size:0.88rem; margin-top:8px; display:none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Terms of Service</h1>
+      <div class="sub">Betsy Notifications — SMS account &amp; system notifications operated by Bob Hannon</div>
+    </header>
+    <p><a href="/">&larr; Back to sign-up page</a></p>
+
+    <div class="card">
+      <ul>
+        <li>By opting in, you agree to receive recurring automated SMS account and system notifications from Betsy Notifications (Bob Hannon) at the number provided.</li>
+        <li>Message frequency varies. Message and data rates may apply.</li>
+        <li>You may opt out at any time by replying <span class="kw">STOP</span>. For help, reply <span class="kw">HELP</span> or use the contact below.</li>
+        <li>This is a non-commercial informational notification service. No goods or services are sold through this Service.</li>
+      </ul>
+    </div>
+
+    <h2>Contact</h2>
+    <p>Bob Hannon — <a href="mailto:bob@bobhannon.com">bob@bobhannon.com</a></p>
+
+    <footer>
+      &copy; <span id="yr">2026</span> Bob Hannon. Betsy Notifications. Not affiliated with any messaging carrier.
+    </footer>
+  </div>
+<script>document.getElementById("yr").textContent=new Date().getFullYear();</script>
+</body>
+</html>
